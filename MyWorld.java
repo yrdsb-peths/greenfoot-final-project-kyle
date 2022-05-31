@@ -18,6 +18,8 @@ public class MyWorld extends World
         super(600, 400, 1, false); 
         
         Fisherman man = new Fisherman();
-        addObject(man, 300, 300);
+        addObject(man, 100, 300);
+        Boat boat = new Boat();
+        addObject(boat, 100, 300);
     }
 }

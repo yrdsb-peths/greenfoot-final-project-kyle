@@ -12,8 +12,9 @@ public class Boat extends Actor
      * Act - do whatever the Boat wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    GreenfootImage boats = getImage();
     public void act()
     {
-        // Add your action code here.
+        boats.scale(120, 150);
     }
 }
