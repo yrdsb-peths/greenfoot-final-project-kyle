@@ -14,7 +14,8 @@ public class Fisherman extends Actor
      */
     private int speed = 5;
     GreenfootImage[] idleRight = new GreenfootImage[2];
-    GreenfootImage[] idleLeft = new GreenfootImage[2]; 
+    GreenfootImage[] idleLeft = new GreenfootImage[2];
+    
     String facing = "right";
     SimpleTimer animationTimer = new SimpleTimer();
     
@@ -40,7 +41,7 @@ public class Fisherman extends Actor
     int imageIndex = 0;
     public void idle()
     {
-        if(animationTimer.millisElapsed() < 700)
+        if(animationTimer.millisElapsed() < 500)
         {
             return;
         }

@@ -28,4 +28,12 @@ public class MyWorld extends World
         addObject(boundary2, 320, 300);
         
     }
+    
+    public void cFish()
+    {
+        Fish c = new Fish();
+        int x = 300;
+        int y = 200;
+        addObject (c, x, y);
+    }
 }
