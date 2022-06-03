@@ -12,10 +12,9 @@ public class Fisherman extends Actor
      * Act - do whatever the Fisherman wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    
+    private int speed = 5;
     GreenfootImage[] idleRight = new GreenfootImage[2];
-    GreenfootImage[] idleLeft = new GreenfootImage[2];
-    
+    GreenfootImage[] idleLeft = new GreenfootImage[2]; 
     String facing = "right";
     SimpleTimer animationTimer = new SimpleTimer();
     
@@ -24,14 +23,14 @@ public class Fisherman extends Actor
         for (int i = 0; i < idleRight.length; i++)
         {
             idleRight[i] = new GreenfootImage("images/idleAni/idle" + i + ".png");
-            idleRight[i].scale(80,60);
+            idleRight[i].scale(100,80);
         }
         
         for (int i = 0; i < idleLeft.length; i++)
         {
             idleLeft[i] = new GreenfootImage("images/idleAni/idle" + i + ".png");
             idleLeft[i].mirrorHorizontally();
-            idleLeft[i].scale(80,60);
+            idleLeft[i].scale(100,80);
         }
         
         animationTimer.mark();
@@ -39,9 +38,9 @@ public class Fisherman extends Actor
     }
     
     int imageIndex = 0;
-    public void animate()
+    public void idle()
     {
-        if(animationTimer.millisElapsed() < 1000)
+        if(animationTimer.millisElapsed() < 700)
         {
             return;
         }
@@ -59,18 +58,44 @@ public class Fisherman extends Actor
             imageIndex = (imageIndex + 1) % idleLeft.length;
         }
     }
-    public void act()
+    
+    
+    
+    public void fish()
     {
-        if (Greenfoot.isKeyDown("a"))
+        if (Greenfoot.isKeyDown("f"))
         {
-            move(-2);
+            
+        }
+    }
+    
+    public void move()
+    {
+        int dx = 0;
+        if (Greenfoot.isKeyDown("d")) 
+        {
+            dx++;
+            facing = "right";
+
         }
         
-        if (Greenfoot.isKeyDown("d"))
+        if (Greenfoot.isKeyDown("a")) 
         {
-            move(2);
+            dx--;
+            facing = "left";
         }
         
-        animate();
+        setLocation(getX()+dx, getY());
+        if (isTouching(Boundary.class))
+        {
+            setLocation(getX()-dx, getY());
+        }
+        
+        idle();
+    }
+    
+       public void act()
+    {
+        move();
     }
 }

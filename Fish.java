@@ -1,21 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Boat here.
+ * Write a description of class Fish here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Boat extends Actor
+public class Fish extends Actor
 {
     /**
-     * Act - do whatever the Boat wants to do. This method is called whenever
+     * Act - do whatever the Fish wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    GreenfootImage boats = getImage();
-    
-    public Boat()
+    public void act()
     {
-        boats.scale(185, 50);
+        // Add your action code here.
     }
 }

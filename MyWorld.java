@@ -18,8 +18,14 @@ public class MyWorld extends World
         super(600, 400, 1, false); 
         
         Fisherman man = new Fisherman();
-        addObject(man, 100, 300);
+        addObject(man, 200, 275);
         Boat boat = new Boat();
-        addObject(boat, 100, 300);
+        addObject(boat, 200, 300);
+        //invisible boundary for boat
+        Boundary boundary1 = new Boundary();
+        addObject(boundary1, 80, 300);
+        Boundary boundary2 = new Boundary();
+        addObject(boundary2, 320, 300);
+        
     }
 }
