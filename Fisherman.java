@@ -12,24 +12,24 @@ public class Fisherman extends Actor
      * Act - do whatever the Fisherman wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    private int currentFrame = 0;
     private int speed = 5;
-    GreenfootImage[] idleRight = new GreenfootImage[2];
-    GreenfootImage[] idleLeft = new GreenfootImage[2];
-    
+    GreenfootImage[] idleRight = new GreenfootImage[5];
+    GreenfootImage[] idleLeft = new GreenfootImage[5];
+    GreenfootImage[] cast = new GreenfootImage[5];
     String facing = "right";
     SimpleTimer animationTimer = new SimpleTimer();
-    
     public Fisherman()
     {
         for (int i = 0; i < idleRight.length; i++)
         {
-            idleRight[i] = new GreenfootImage("images/idleAni/idle" + i + ".png");
+            idleRight[i] = new GreenfootImage("images/walkingAni/walking" + i + ".png");
             idleRight[i].scale(100,80);
         }
         
         for (int i = 0; i < idleLeft.length; i++)
         {
-            idleLeft[i] = new GreenfootImage("images/idleAni/idle" + i + ".png");
+            idleLeft[i] = new GreenfootImage("images/walkingAni/walking" + i + ".png");
             idleLeft[i].mirrorHorizontally();
             idleLeft[i].scale(100,80);
         }
@@ -41,7 +41,7 @@ public class Fisherman extends Actor
     int imageIndex = 0;
     public void idle()
     {
-        if(animationTimer.millisElapsed() < 500)
+        if(animationTimer.millisElapsed() < 200)
         {
             return;
         }
@@ -60,13 +60,20 @@ public class Fisherman extends Actor
         }
     }
     
-    
-    
-    public void fish()
+    public void cast()
     {
         if (Greenfoot.isKeyDown("f"))
         {
-            
+            cast[1] = new GreenfootImage("images/castAni/cast0.png");
+            setImage(cast[1]);
+            cast[2] = new GreenfootImage("images/castAni/cast1.png");
+            setImage(cast[2]);
+            cast[3] = new GreenfootImage("images/castAni/cast2.png");
+            setImage(cast[3]);
+            cast[4] = new GreenfootImage("images/castAni/cast3.png");
+            setImage(cast[4]);
+            cast[5] = new GreenfootImage("images/castAni/cast4.png");
+            setImage(cast[5]);
         }
     }
     
@@ -77,13 +84,14 @@ public class Fisherman extends Actor
         {
             dx++;
             facing = "right";
-
+            idle();
         }
         
         if (Greenfoot.isKeyDown("a")) 
         {
             dx--;
             facing = "left";
+            idle();
         }
         
         setLocation(getX()+dx, getY());
@@ -92,11 +100,18 @@ public class Fisherman extends Actor
             setLocation(getX()-dx, getY());
         }
         
-        idle();
     }
     
-       public void act()
+    public void act()
     {
+        /*int frame = 0;
+        currentFrame = (currentFrame + 1) % 50;
+        if (frame % 10 == 0) 
+        {
+            final int imageIndex = frame / 60;
+            setImage(new GreenfootImage("images/castAni/cast" + imageIndex + ".png"));
+            frame++;
+        }&*/
         move();
     }
 }

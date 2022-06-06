@@ -23,9 +23,9 @@ public class MyWorld extends World
         addObject(boat, 200, 300);
         //invisible boundary for boat
         Boundary boundary1 = new Boundary();
-        addObject(boundary1, 80, 300);
+        addObject(boundary1, 62, 300);
         Boundary boundary2 = new Boundary();
-        addObject(boundary2, 320, 300);
+        addObject(boundary2, 325, 300);
         
     }
     

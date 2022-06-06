@@ -16,6 +16,6 @@ public class Boat extends Actor
     
     public Boat()
     {
-        boats.scale(185, 50);
+        boats.scale(200, 50);
     }
 }
