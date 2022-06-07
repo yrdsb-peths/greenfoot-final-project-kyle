@@ -12,34 +12,81 @@ public class Fisherman extends Actor
      * Act - do whatever the Fisherman wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private int currentFrame = 0;
-    private int speed = 5;
-    GreenfootImage[] idleRight = new GreenfootImage[5];
-    GreenfootImage[] idleLeft = new GreenfootImage[5];
-    GreenfootImage[] cast = new GreenfootImage[5];
+    
+    /*GreenfootImage[] walkRight = new GreenfootImage[5];
+    GreenfootImage[] walkLeft = new GreenfootImage[5];
+    GreenfootImage[] castRight = new GreenfootImage[5];
+    GreenfootImage[] castLeft = new GreenfootImage[5];
     String facing = "right";
-    SimpleTimer animationTimer = new SimpleTimer();
+    SimpleTimer animationTimer = new SimpleTimer();*/
+    GreenfootImage[] walkRight, walkLeft, castRight, castLeft, currAnim;
+    int animTimer;
     public Fisherman()
     {
-        for (int i = 0; i < idleRight.length; i++)
+        walkRight = new GreenfootImage[5];
+        walkLeft = new GreenfootImage[5];
+        castRight = new GreenfootImage[5];
+        castLeft = new GreenfootImage[5];
+        
+        for (int i = 0; i < 5; i++)
         {
-            idleRight[i] = new GreenfootImage("images/walkingAni/walking" + i + ".png");
-            idleRight[i].scale(100,80);
+            walkRight[i] = new GreenfootImage("images/walkingAni/walking" + i + ".png");
+            walkRight[i].scale(100,80);
+            walkLeft[i] = new GreenfootImage("images/walkingAni/walking" + i + ".png");
+            walkLeft[i].scale(100,80);
+            castRight[i] = new GreenfootImage("images/castAni/cast" + i + ".png");
+            castRight[i].scale(100,80);
+            castLeft[i] = new GreenfootImage("images/castAni/cast" + i + ".png");
+            castLeft[i].scale(100,80);
         }
         
-        for (int i = 0; i < idleLeft.length; i++)
+        setAnimation(walkRight);
+    
+    
+        /*for (int i = 0; i < walkRight.length; i++)
         {
-            idleLeft[i] = new GreenfootImage("images/walkingAni/walking" + i + ".png");
-            idleLeft[i].mirrorHorizontally();
-            idleLeft[i].scale(100,80);
+            walkRight[i] = new GreenfootImage("images/walkingAni/walking" + i + ".png");
+            walkRight[i].scale(100,80);
         }
+        
+        for (int i = 0; i < walkLeft.length; i++)
+        {
+            walkLeft[i] = new GreenfootImage("images/walkingAni/walking" + i + ".png");
+            walkLeft[i].mirrorHorizontally();
+            walkLeft[i].scale(100,80);
+        }
+        
         
         animationTimer.mark();
-        setImage(idleRight[1]);
+        setImage(walkRight[1]);*/
     }
     
-    int imageIndex = 0;
-    public void idle()
+    private void setAnimation(GreenfootImage[] anim)
+    {
+        currAnim = anim;
+        animTimer = -1;
+        setImage();
+    }
+    
+    private void setImage()
+    {
+        animTimer = (animTimer+1)%(10*currAnim.length);
+        if(animTimer%10 == 0) 
+        {
+            setImage(currAnim[animTimer/10]);
+        }
+    }
+    
+    public void act()
+    {
+        if(!casting())
+        {
+            move();
+        }
+    }
+    
+    /*int imageIndex = 0;
+    public void walk()
     {
         if(animationTimer.millisElapsed() < 200)
         {
@@ -49,49 +96,137 @@ public class Fisherman extends Actor
         
         if(facing.equals("right"))
         {
-            setImage(idleRight[imageIndex]);
-            imageIndex = (imageIndex + 1) % idleRight.length;
+            setImage(walkRight[imageIndex]);
+            imageIndex = (imageIndex + 1) % walkRight.length;
         }
         
         else
         {
-            setImage(idleLeft[imageIndex]);
-            imageIndex = (imageIndex + 1) % idleLeft.length;
+            setImage(walkLeft[imageIndex]);
+            imageIndex = (imageIndex + 1) % walkLeft.length;
+        }
+    }*/
+    
+    private boolean casting()
+    {
+        if (currAnim == castLeft || currAnim == castRight)
+        {
+            setImage();
+            if(animTimer == 0)
+            {
+                setAnimation(currAnim == castLeft ? walkLeft : walkRight);
+            }
+            else 
+            {
+                return true;
+            }
+        }
+        
+        if (Greenfoot.isKeyDown("f"))
+        {
+            setAnimation(currAnim == walkLeft ? castLeft : castRight);
+            return true;
+        }
+        return false;
+    }
+    
+    private void move()
+    {
+        int dx = 0;
+        if (Greenfoot.isKeyDown ("a"))
+        {
+            dx--;
+        }
+        
+        if (Greenfoot.isKeyDown("d"))
+        {
+            dx++;
+        }
+        
+        if(dx == 0)
+        {
+            return;
+        }
+        
+        setLocation(getX()+dx, getY());
+        if (isTouching(Boundary.class))
+        {
+            setLocation(getX()-dx, getY());
+        }
+        
+        if (dx < 0 && currAnim != walkLeft)
+        {
+            setAnimation(walkLeft);
+        }
+        
+        else if (dx > 0 && currAnim != walkRight)
+        {
+            setAnimation(walkRight);
+        }
+        
+        else
+        {
+            setImage();
         }
     }
     
-    public void cast()
+    /*public void casting()
+    {
+        for (int i = 0; i < castRight.length; i++)
+        {
+            castRight[i] = new GreenfootImage("images/castAni/cast" + i + ".png");
+            castRight[i].scale(100,80);
+        }
+        
+        for (int i = 0; i < castLeft.length; i++)
+        {
+            castLeft[i] = new GreenfootImage("images/castAni/cast" + i + ".png");
+            castLeft[i].mirrorHorizontally();
+            castLeft[i].scale(100,80);
+        }
+        
+        if(animationTimer.millisElapsed() < 200)
+        {
+            return;
+        }
+        animationTimer.mark();
+        
+        if(facing.equals("right"))
+        {
+            setImage(castRight[imageIndex]);
+            imageIndex = (imageIndex + 1) % castRight.length;
+        }
+        
+        else
+        {
+            setImage(castLeft[imageIndex]);
+            imageIndex = (imageIndex + 1) % castLeft.length;
+        }
+    }
+    
+    public void castIt()
     {
         if (Greenfoot.isKeyDown("f"))
         {
-            cast[1] = new GreenfootImage("images/castAni/cast0.png");
-            setImage(cast[1]);
-            cast[2] = new GreenfootImage("images/castAni/cast1.png");
-            setImage(cast[2]);
-            cast[3] = new GreenfootImage("images/castAni/cast2.png");
-            setImage(cast[3]);
-            cast[4] = new GreenfootImage("images/castAni/cast3.png");
-            setImage(cast[4]);
-            cast[5] = new GreenfootImage("images/castAni/cast4.png");
-            setImage(cast[5]);
+            cast();
         }
-    }
+    }*/
     
-    public void move()
+    /*public void move()
     {
         int dx = 0;
         if (Greenfoot.isKeyDown("d")) 
         {
             dx++;
             facing = "right";
-            idle();
+            walk();
         }
         
         if (Greenfoot.isKeyDown("a")) 
         {
             dx--;
             facing = "left";
-            idle();
+            walk();
         }
         
         setLocation(getX()+dx, getY());
@@ -104,14 +239,15 @@ public class Fisherman extends Actor
     
     public void act()
     {
-        /*int frame = 0;
+        int frame = 0;
         currentFrame = (currentFrame + 1) % 50;
         if (frame % 10 == 0) 
         {
             final int imageIndex = frame / 60;
             setImage(new GreenfootImage("images/castAni/cast" + imageIndex + ".png"));
             frame++;
-        }&*/
+        }&
+        castIt();
         move();
-    }
+    }*/
 }
