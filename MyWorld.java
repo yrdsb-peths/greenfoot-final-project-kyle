@@ -13,10 +13,14 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
+    private final int typeCount = 1;
+    private GreenfootImage[] fishImages = new GreenfootImage[typeCount];
+    private int[] fishCount = new int[10];
+    public int score = 0;
+    public Label scoreLabel = new Label(0,80);
     public MyWorld()
     {    
         super(600, 400, 1, false); 
-        
         Fisherman man = new Fisherman();
         addObject(man, 200, 275);
         Boat boat = new Boat();
@@ -26,14 +30,24 @@ public class MyWorld extends World
         addObject(boundary1, 62, 300);
         Boundary boundary2 = new Boundary();
         addObject(boundary2, 325, 300);
-        
+        //score
+        addObject(scoreLabel, 50, 50);
     }
     
-    public void cFish()
+    public void getFish()
     {
-        Fish c = new Fish();
-        int x = 300;
-        int y = 200;
-        addObject (c, x, y);
+        int[] fishes = new int[100];
+        int n = 0;
+        for (int t=0; t<typeCount; t++)
+        {
+            for (int i=0; i<fishCount[t]; i++) 
+            fishes[n+i] = t;
+            n += fishCount[t];
+        }
+         
+        // choose a caught fish
+        int caughtFish = Greenfoot.getRandomNumber(100);
+        int type = fishes[caughtFish]; // type of fish caught
+        GreenfootImage image = fishImages[type];
     }
 }

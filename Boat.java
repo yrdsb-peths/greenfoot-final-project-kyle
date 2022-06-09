@@ -18,4 +18,18 @@ public class Boat extends Actor
     {
         boats.scale(200, 50);
     }
+    
+    private void move()
+    {
+        int dx = 0;
+        if (Greenfoot.isKeyDown ("a"))
+        {
+            dx--;
+        }
+        
+        if (Greenfoot.isKeyDown("right"))
+        {
+            dx++;
+        }
+    }
 }
