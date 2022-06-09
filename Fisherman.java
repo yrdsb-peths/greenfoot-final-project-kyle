@@ -108,6 +108,7 @@ public class Fisherman extends Actor
 
     private boolean casting()
     {
+        int x = 0;
         if (currAnim == castLeft || currAnim == castRight)
         {
             setImage();

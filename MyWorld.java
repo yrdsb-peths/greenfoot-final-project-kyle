@@ -14,8 +14,8 @@ public class MyWorld extends World
      * 
      */
     private final int typeCount = 1;
-    private GreenfootImage[] fishImages = new GreenfootImage[typeCount];
-    private int[] fishCount = new int[10];
+    GreenfootImage[] fishImages = new GreenfootImage[typeCount];
+    private int[] fishCount = new int[] {10, 20, 70};
     public int score = 0;
     public Label scoreLabel = new Label(0,80);
     public MyWorld()
@@ -33,11 +33,16 @@ public class MyWorld extends World
         //score
         addObject(scoreLabel, 50, 50);
     }
+
     
+    //choosing a fish
     public void getFish()
     {
         int[] fishes = new int[100];
         int n = 0;
+        /*making an array for each type of fish using the percentages in the
+        fishCount array so that when it chooses a random number, depending on 
+        which fish's array the number is in,it will choose that type of fish*/
         for (int t=0; t<typeCount; t++)
         {
             for (int i=0; i<fishCount[t]; i++) 
