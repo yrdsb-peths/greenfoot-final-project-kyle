@@ -32,6 +32,11 @@ public class MyWorld extends World
         addObject(boundary2, 325, 300);
         //score
         addObject(scoreLabel, 50, 50);
+        
+        for (int i = 0; i < 1; i++)
+        {
+            fishImages[i] = new GreenfootImage("Images/fishTypes/fish" + i + ".png");
+        }
     }
 
     

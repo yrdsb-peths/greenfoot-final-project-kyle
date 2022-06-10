@@ -71,14 +71,9 @@ public class Fisherman extends Actor
     
     public void act()
     {
-        if(!casting())
+        if ( ! reeling() && ! casting() )
         {
             move();
-        }
-        
-        if(casting())
-        {
-            reeling();
         }
     }
     
@@ -90,6 +85,7 @@ public class Fisherman extends Actor
             if(animTimer == 0)
             {
                 setAnimation(currAnim == reelLeft ? walkLeft : walkRight);
+                //MyWorld.getFish();
             }
             else
             {
