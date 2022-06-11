@@ -13,14 +13,17 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    private final int typeCount = 1;
-    GreenfootImage[] fishImages = new GreenfootImage[typeCount];
-    private int[] fishCount = new int[] {10, 20, 70};
+    private final int typeCount = 4;
+    GreenfootImage[] fishImages;
+    private int[] fishCount = new int[] {50, 30, 15, 5};
     public int score = 0;
     public Label scoreLabel = new Label(0,80);
+    Label fishCaught = new Label ("Fish Caught: ", 30);
     public MyWorld()
     {    
         super(600, 400, 1, false); 
+        addObject(fishCaught, 480, 10);
+        fishImages = new GreenfootImage[typeCount];
         Fisherman man = new Fisherman();
         addObject(man, 200, 275);
         Boat boat = new Boat();
@@ -33,21 +36,20 @@ public class MyWorld extends World
         //score
         addObject(scoreLabel, 50, 50);
         
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < typeCount; i++)
         {
             fishImages[i] = new GreenfootImage("Images/fishTypes/fish" + i + ".png");
         }
     }
 
-    
     //choosing a fish
     public void getFish()
     {
         int[] fishes = new int[100];
         int n = 0;
-        /*making an array for each type of fish using the percentages in the
-        fishCount array so that when it chooses a random number, depending on 
-        which fish's array the number is in,it will choose that type of fish*/
+        //making an array for each type of fish using the percentages in the
+        //fishCount array so that when it chooses a random number, depending on 
+        //which fish's array the number is in,it will choose that type of fish
         for (int t=0; t<typeCount; t++)
         {
             for (int i=0; i<fishCount[t]; i++) 
@@ -59,5 +61,15 @@ public class MyWorld extends World
         int caughtFish = Greenfoot.getRandomNumber(100);
         int type = fishes[caughtFish]; // type of fish caught
         GreenfootImage image = fishImages[type];
+        Actor tempActor = new TempImage();
+        tempActor.setImage(image);
+        addObject(tempActor, 580, 13);
+        increaseScore();
+    }
+    
+    public void increaseScore()
+    {
+        score++;
+        scoreLabel.setValue(score);
     }
 }

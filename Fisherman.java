@@ -20,6 +20,8 @@ public class Fisherman extends Actor
     GreenfootImage[] typeFish;
     GreenfootImage[] reelRight;
     GreenfootImage[] reelLeft;
+    GreenfootImage[] fishLeft;
+    GreenfootImage[] fishRight;
     GreenfootImage[] currAnim;
     int animTimer;
     public Fisherman()
@@ -30,6 +32,8 @@ public class Fisherman extends Actor
         castLeft = new GreenfootImage[5];
         reelRight = new GreenfootImage[5];
         reelLeft = new GreenfootImage[5];
+        fishRight = new GreenfootImage[5];
+        fishLeft = new GreenfootImage[5];
         
         for (int i = 0; i < 5; i++)
         {
@@ -48,6 +52,11 @@ public class Fisherman extends Actor
             reelLeft[i] = new GreenfootImage("images/reelingAni/reel" + i + ".png");
             reelLeft[i].scale(100,80);
             reelLeft[i].mirrorHorizontally();
+            fishRight[i] = new GreenfootImage("images/fishingAni/fishing" + i + ".png");
+            fishRight[i].scale(100,53);
+            fishLeft[i] = new GreenfootImage("images/fishingAni/fishing" + i + ".png");
+            fishLeft[i].scale(100,53);
+            fishLeft[i].mirrorHorizontally();
         }
         
         setAnimation(walkRight);
@@ -71,7 +80,7 @@ public class Fisherman extends Actor
     
     public void act()
     {
-        if ( ! reeling() && ! casting() )
+        if (!reeling() && ! casting())
         {
             move();
         }
@@ -84,8 +93,8 @@ public class Fisherman extends Actor
             setImage();
             if(animTimer == 0)
             {
-                setAnimation(currAnim == reelLeft ? walkLeft : walkRight);
-                //MyWorld.getFish();
+                setAnimation(currAnim == fishLeft ? walkLeft : walkRight);
+                ((MyWorld)getWorld()).getFish();
             }
             else
             {
@@ -110,7 +119,7 @@ public class Fisherman extends Actor
             setImage();
             if(animTimer == 0)
             {
-                setAnimation(currAnim == castLeft ? reelLeft : reelRight);
+                setAnimation(currAnim == castLeft ? fishLeft : fishRight);
             }
             else 
             {
