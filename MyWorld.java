@@ -69,14 +69,50 @@ public class MyWorld extends World
         Actor tempActor = new TempImage();
         tempActor.setImage(image);
         addObject(tempActor, 580, 13);
-        increaseScore();
+        if (type == 0)
+        {
+            CincreaseScore();
+        }
+        
+        if (type == 1)
+        {
+            RincreaseScore();
+        }
+        
+        if (type == 2)
+        {
+            EincreaseScore();
+        }
+        
+        if (type == 3)
+        {
+            LincreaseScore();
+        }
         gotFish.setVolume(70);
         gotFish.play();
     }
     
-    public void increaseScore()
+    public void CincreaseScore()
     {
         score++;
+        scoreLabel.setValue(score);
+    }
+    
+    public void RincreaseScore()
+    {
+        score += 2;
+        scoreLabel.setValue(score);
+    }
+    
+    public void EincreaseScore()
+    {
+        score += 3;
+        scoreLabel.setValue(score);
+    }
+    
+    public void LincreaseScore()
+    {
+        score += 4;
         scoreLabel.setValue(score);
     }
     
@@ -84,7 +120,7 @@ public class MyWorld extends World
     {
         Bubbles b = new Bubbles();
         int x = 500;
-        int y = 270;
+        int y = 290;
         addObject (b, x, y);
     }
 }

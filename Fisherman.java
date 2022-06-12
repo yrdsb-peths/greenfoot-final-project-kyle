@@ -93,7 +93,7 @@ public class Fisherman extends Actor
             setImage();
             if(animTimer == 0)
             {
-                setAnimation(currAnim == fishLeft ? walkLeft : walkRight);
+                setAnimation(currAnim == reelLeft ? walkLeft : walkRight);
                 if (isTouching(Bubbles.class))
                 {
                     ((MyWorld)getWorld()).getFish();
@@ -107,8 +107,11 @@ public class Fisherman extends Actor
         
         if(Greenfoot.isKeyDown("e"))
         {
-            setAnimation(currAnim == fishLeft ? reelLeft : reelRight);
-            return true;
+            if (currAnim == fishLeft || currAnim == fishRight)
+            {
+                setAnimation(currAnim == fishLeft ? reelLeft : reelRight);
+                return true;
+            }
         }
         
         return false;
