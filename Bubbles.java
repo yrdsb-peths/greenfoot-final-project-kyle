@@ -13,7 +13,7 @@ public class Bubbles extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     GreenfootImage bubble = getImage();
-    int speed = 10;
+    int speed = 15;
     int timer;
     
     public void Bubbles()

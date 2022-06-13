@@ -36,8 +36,8 @@ public class Instructions extends World
     {
         if(Greenfoot.isKeyDown("enter"))
         {
-            MyWorld gameWorld = new MyWorld();
-            Greenfoot.setWorld(gameWorld);
+            pointsMenu points = new pointsMenu();
+            Greenfoot.setWorld(points);
         }
     }
 }
