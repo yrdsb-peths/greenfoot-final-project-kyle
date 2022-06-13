@@ -12,7 +12,6 @@ public class Fisherman extends Actor
      * Act - do whatever the Fisherman wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    
     GreenfootImage[] walkRight;
     GreenfootImage[] walkLeft;
     GreenfootImage[] castRight;
@@ -23,6 +22,7 @@ public class Fisherman extends Actor
     GreenfootImage[] fishLeft;
     GreenfootImage[] fishRight;
     GreenfootImage[] currAnim;
+    GreenfootSound plopWater = new GreenfootSound("castingLine.mp3");
     int animTimer;
     public Fisherman()
     {
@@ -97,6 +97,9 @@ public class Fisherman extends Actor
                 if (isTouching(Bubbles.class))
                 {
                     ((MyWorld)getWorld()).getFish();
+                    removeTouching(Bubbles.class);
+                    MyWorld world = (MyWorld) getWorld();
+                    world.spawnBubbles();
                 }
             }
             else
@@ -136,6 +139,7 @@ public class Fisherman extends Actor
         if (Greenfoot.isKeyDown("f"))
         {
             setAnimation(currAnim == walkLeft ? castLeft : castRight);
+            plopWater.play();
             return true;
         }
         return false;

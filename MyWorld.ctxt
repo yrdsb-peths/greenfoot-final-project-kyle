@@ -15,4 +15,6 @@ comment6.params=
 comment6.target=void\ LincreaseScore()
 comment7.params=
 comment7.target=void\ spawnBubbles()
-numComments=8
+comment8.params=
+comment8.target=void\ gameOver()
+numComments=9

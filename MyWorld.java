@@ -15,13 +15,17 @@ public class MyWorld extends World
      */
     private final int typeCount = 4;
     GreenfootImage[] fishImages;
+    //sounds
     GreenfootSound backgroundMusic = new GreenfootSound("peacefulmusic.mp3");
     GreenfootSound gotFish = new GreenfootSound("gotFish.wav");
+    //the percentage chance for each fish to be caught
     private int[] fishCount = new int[] {50, 30, 15, 5};
     public int score = 0;
     public Label scoreLabel = new Label(0,30);
     Label fishCaught = new Label ("Fish Caught: ", 30);
     Label myScore = new Label ("Score: ", 30);
+    int timer;
+    int timePerMove = 10;
     public MyWorld()
     {    
         super(600, 400, 1, false); 
@@ -71,46 +75,46 @@ public class MyWorld extends World
         addObject(tempActor, 580, 13);
         if (type == 0)
         {
-            CincreaseScore();
+            CincreaseScore(); 
         }
         
         if (type == 1)
         {
-            RincreaseScore();
+            RincreaseScore(); 
         }
         
         if (type == 2)
         {
-            EincreaseScore();
+            EincreaseScore(); 
         }
         
         if (type == 3)
         {
-            LincreaseScore();
+            LincreaseScore(); 
         }
         gotFish.setVolume(70);
         gotFish.play();
     }
     
-    public void CincreaseScore()
+    public void CincreaseScore() //common fish = 1 point
     {
         score++;
         scoreLabel.setValue(score);
     }
     
-    public void RincreaseScore()
+    public void RincreaseScore() //rare fish = 2 points
     {
         score += 2;
         scoreLabel.setValue(score);
     }
     
-    public void EincreaseScore()
+    public void EincreaseScore() //epic fish = 3 points
     {
         score += 3;
         scoreLabel.setValue(score);
     }
     
-    public void LincreaseScore()
+    public void LincreaseScore() //legendary fish = 4 points
     {
         score += 4;
         scoreLabel.setValue(score);
@@ -121,6 +125,14 @@ public class MyWorld extends World
         Bubbles b = new Bubbles();
         int x = 500;
         int y = 290;
+        b.speed = timePerMove;
+        timePerMove -= 1;
         addObject (b, x, y);
+    }
+    
+    public void gameOver()
+    {
+        GameOver overWorld = new GameOver();
+        Greenfoot.setWorld (overWorld);
     }
 }

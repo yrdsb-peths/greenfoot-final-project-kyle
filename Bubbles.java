@@ -27,14 +27,14 @@ public class Bubbles extends Actor
         int y = getY();
         if(++timer % speed == 0)
         {
-            setLocation(x - 5, y);
+            setLocation(x - 10, y);
         }
         
         MyWorld world = (MyWorld)getWorld();
         
-        if(getY() >= world.getWidth())
+        if(getX() <= 0)
         {
-           
+           world.gameOver();
         }
         
     }
