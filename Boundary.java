@@ -18,18 +18,4 @@ public class Boundary extends Actor
     {
         boundaries.scale(1, 1);
     }
-    
-    public void move()
-    {
-        int sx = 0;
-        if (Greenfoot.isKeyDown ("left"))
-        {
-            sx--;
-        }
-        
-        if (Greenfoot.isKeyDown("right"))
-        {
-            sx++;
-        }
-    }
 }

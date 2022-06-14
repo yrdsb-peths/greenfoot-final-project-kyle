@@ -21,6 +21,6 @@ public class TempImage extends Actor
     
     public void act()
     {
-        if (++timer == 120) getWorld().removeObject(this);
+        if (++timer == 90) getWorld().removeObject(this);
     }
 }

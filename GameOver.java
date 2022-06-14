@@ -9,7 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class GameOver extends World
 {
     Label gameOver = new Label ("Game Over :(", 80);
+    Label myScore = new Label ("Score: ", 30);
     GreenfootSound lost = new GreenfootSound("gameOver.wav");
+    
     /**
      * Constructor for objects of class GameOver.
      * 
@@ -18,6 +20,7 @@ public class GameOver extends World
     {    
         super(600, 400, 1); 
         addObject(gameOver, 300, 200);
+        addObject
         lost.play();
     }
 }

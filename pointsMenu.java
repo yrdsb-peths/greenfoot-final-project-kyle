@@ -12,29 +12,32 @@ public class pointsMenu extends World
     Label points2 = new Label ("= 2 points", 40);
     Label points3 = new Label ("= 3 points", 40);
     Label points4 = new Label ("= 4 points", 40);
+    Label goBack = new Label ("<-- (R) GO BACK", 23);
     public pointsMenu()
     {    
         super(600, 400, 1); 
-        One one = new One();
-        addObject(one, 50, 150);
-        Two two = new Two();
-        addObject(two, 400, 150);
-        Three three = new Three();
+        aOne one = new aOne();
+        addObject(one, 50, 100);
+        bTwo two = new bTwo();
+        addObject(two, 400, 100);
+        cThree three = new cThree();
         addObject(three, 50, 250);
-        Four four = new Four();
+        dFour four = new dFour();
         addObject(four, 400, 250);
-        addObject(points1, 150, 150);
-        addObject(points2, 500, 150);
+        
+        addObject(points1, 150, 100);
+        addObject(points2, 500, 100);
         addObject(points3, 150, 250);
         addObject(points4, 500, 250);
+        addObject(goBack, 75, 390);
     }
     
     public void act()
     {
-        if(Greenfoot.isKeyDown("space"))
+        if(Greenfoot.isKeyDown("R"))
         {
-            MyWorld GameWorld = new MyWorld();
-            Greenfoot.setWorld(GameWorld);
+            TitleScreen titleWorld = new TitleScreen();
+            Greenfoot.setWorld(titleWorld);
         }
     }
 

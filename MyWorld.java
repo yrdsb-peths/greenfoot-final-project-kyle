@@ -25,7 +25,7 @@ public class MyWorld extends World
     Label fishCaught = new Label ("Fish Caught: ", 30);
     Label myScore = new Label ("Score: ", 30);
     int timer;
-    int timePerMove = 10;
+    int timePerMove = 20;
     public MyWorld()
     {    
         super(600, 400, 1, false); 
@@ -33,15 +33,16 @@ public class MyWorld extends World
         addObject(myScore, 527, 45);
         fishImages = new GreenfootImage[typeCount];
         Fisherman man = new Fisherman();
-        addObject(man, 200, 275);
+        addObject(man, 300, 275);
         Boat boat = new Boat();
-        addObject(boat, 200, 300);
+        addObject(boat, 300, 300);
         spawnBubbles();
+        spawnBubbles2();
         //invisible boundary for boat
         Boundary boundary1 = new Boundary();
-        addObject(boundary1, 62, 300);
+        addObject(boundary1, 125, 300);
         Boundary boundary2 = new Boundary();
-        addObject(boundary2, 325, 300);
+        addObject(boundary2, 460, 300);
         //score
         addObject(scoreLabel, 580, 47);
         backgroundMusic.play();
@@ -120,18 +121,35 @@ public class MyWorld extends World
         scoreLabel.setValue(score);
     }
     
-    public void spawnBubbles()
+    public void spawnBubbles()//spawns bubbles with increasing speed
     {
         Bubbles b = new Bubbles();
-        int x = 500;
+        int x = (Greenfoot.getRandomNumber(200));
         int y = 290;
-        b.speed = timePerMove;
-        timePerMove -= 1;
-        addObject (b, x, y);
+        b.frame = timePerMove;
+        if(score % 2 == 0)
+        {
+            timePerMove -= 1;
+        }
+        addObject (b, x + 400, y);
+    }
+    
+    public void spawnBubbles2()//spawns bubbles with increasing speed
+    {
+        Bubbles2 b2 = new Bubbles2();
+        int x = (Greenfoot.getRandomNumber(200));
+        int y = 290;
+        b2.frame = timePerMove;
+        if(score % 2 == 0)
+        {
+            timePerMove -= 1;
+        }
+        addObject (b2, x, y);
     }
     
     public void gameOver()
     {
+        backgroundMusic.stop();
         GameOver overWorld = new GameOver();
         Greenfoot.setWorld (overWorld);
     }

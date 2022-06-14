@@ -1,22 +1,21 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Four here.
+ * Write a description of class One here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Four extends Actor
+public class aOne extends Actor
 {
     /**
-     * Act - do whatever the Four wants to do. This method is called whenever
+     * Act - do whatever the One wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    GreenfootImage four = getImage();
+    GreenfootImage one = getImage();
     
     public void act()
     {
-        four.scale (50, 40);
+        one.scale (50, 40);
     }
-
 }

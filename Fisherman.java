@@ -86,7 +86,7 @@ public class Fisherman extends Actor
         }
     }
     
-    boolean reeling()
+    boolean reeling() //plays reeling animation
     {
         if (currAnim == reelLeft || currAnim == reelRight)
         {
@@ -94,12 +94,23 @@ public class Fisherman extends Actor
             if(animTimer == 0)
             {
                 setAnimation(currAnim == reelLeft ? walkLeft : walkRight);
-                if (isTouching(Bubbles.class))
+            }  
+            if(animTimer == 10)
+            {
+                if (isTouching(Bubbles.class)) //catches fish if touching bubbles during reeling animation
                 {
                     ((MyWorld)getWorld()).getFish();
                     removeTouching(Bubbles.class);
                     MyWorld world = (MyWorld) getWorld();
                     world.spawnBubbles();
+                }
+                
+                else if (isTouching(Bubbles2.class))
+                {
+                    ((MyWorld)getWorld()).getFish();
+                    removeTouching(Bubbles2.class);
+                    MyWorld world = (MyWorld) getWorld();
+                    world.spawnBubbles2();
                 }
             }
             else
@@ -108,7 +119,7 @@ public class Fisherman extends Actor
             }
         }
         
-        if(Greenfoot.isKeyDown("e"))
+        if(Greenfoot.isKeyDown("e")) 
         {
             if (currAnim == fishLeft || currAnim == fishRight)
             {
@@ -120,7 +131,7 @@ public class Fisherman extends Actor
         return false;
     }
 
-    private boolean casting()
+    private boolean casting() //casts fishing rod
     {
         int x = 0;
         if (currAnim == castLeft || currAnim == castRight)
@@ -145,7 +156,7 @@ public class Fisherman extends Actor
         return false;
     }
     
-    private void move()
+    private void move() //movement
     {
         int dx = 0;
         if (Greenfoot.isKeyDown ("a"))
@@ -164,7 +175,7 @@ public class Fisherman extends Actor
         }
         
         setLocation(getX()+dx, getY());
-        if (isTouching(Boundary.class))
+        if (isTouching(Boundary.class)) //doesnt allow fisherman to walk off boat
         {
             setLocation(getX()-dx, getY());
         }

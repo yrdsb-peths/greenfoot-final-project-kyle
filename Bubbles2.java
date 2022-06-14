@@ -1,24 +1,24 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class bubbles here.
+ * Write a description of class Bubbles2 here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Bubbles extends Actor
+public class Bubbles2 extends Actor
 {
     /**
-     * Act - do whatever the bubbles wants to do. This method is called whenever
+     * Act - do whatever the Bubbles2 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    GreenfootImage bubble = getImage();
+    GreenfootImage bubble2 = getImage();
     int frame = 15;
     int timer;
     
-    public void Bubbles()
+    public void Bubbles2()
     {
-        bubble.scale(1, 1);
+        bubble2.scale(1, 1);
     }
     
     public void act()
@@ -27,12 +27,12 @@ public class Bubbles extends Actor
         int y = getY();
         if(++timer % frame == 0) //increases speed of bubbles based on decreasing speed
         {
-            setLocation(x - 10, y);
+            setLocation(x + 10, y);
         }
         
         MyWorld world = (MyWorld)getWorld();
         
-        if(getX() <= 0) //if bubble reaches edge of world, game over
+        if(getX() >= 600) //if bubble reaches edge of world, game over
         {
            world.gameOver();
         }

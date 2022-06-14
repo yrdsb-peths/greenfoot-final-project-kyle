@@ -16,20 +16,6 @@ public class Boat extends Actor
     
     public Boat()
     {
-        boats.scale(200, 50);
-    }
-    
-    private void move()
-    {
-        int dx = 0;
-        if (Greenfoot.isKeyDown ("a"))
-        {
-            dx--;
-        }
-        
-        if (Greenfoot.isKeyDown("right"))
-        {
-            dx++;
-        }
+        boats.scale(300, 55);
     }
 }
