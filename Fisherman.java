@@ -105,7 +105,7 @@ public class Fisherman extends Actor
                     world.spawnBubbles();
                 }
                 
-                else if (isTouching(Bubbles2.class))
+                else if (isTouching(Bubbles2.class)) //catches fish if touching bubbles during reeling animation
                 {
                     ((MyWorld)getWorld()).getFish();
                     removeTouching(Bubbles2.class);
@@ -180,7 +180,7 @@ public class Fisherman extends Actor
             setLocation(getX()-dx, getY());
         }
         
-        if (dx < 0 && currAnim != walkLeft)
+        if (dx < 0 && currAnim != walkLeft) 
         {
             setAnimation(walkLeft);
         }

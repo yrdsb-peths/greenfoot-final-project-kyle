@@ -150,7 +150,7 @@ public class MyWorld extends World
     public void gameOver()
     {
         backgroundMusic.stop();
-        GameOver overWorld = new GameOver();
+        GameOver overWorld = new GameOver(score);
         Greenfoot.setWorld (overWorld);
     }
 }

@@ -11,6 +11,7 @@ public class Instructions extends World
     Label howTo = new Label ("Press - A - and - D - to move left and right", 30);
     Label howTo2 = new Label ("Press - F - to cast and - E - to reel fishing rod", 30);
     Label howTo3 = new Label ("Reel in fishing rod on the bubbles to catch fish", 30);
+    Label howTo4 = new Label ("Dont let the bubbles pass!", 30);
     Label goBack = new Label ("GO BACK (R) -->", 23);
     Label title = new Label ("INSTRUCTIONS", 50);
     Label underline = new Label ("______________________",50);
@@ -26,6 +27,7 @@ public class Instructions extends World
         addObject(howTo, 300, 160);
         addObject(howTo2, 300, 200);
         addObject(howTo3, 300, 240);
+        addObject(howTo4, 300, 280);
         addObject(goBack, 525, 390);
         addObject(title, 300, 80);
         addObject(underline, 300, 100);
