@@ -36,6 +36,7 @@ public class GameOver extends World
         {
             button.setVolume(40);
             button.play();
+            lost.stop();
             TitleScreen titleWorld = new TitleScreen();
             Greenfoot.setWorld(titleWorld);
         }

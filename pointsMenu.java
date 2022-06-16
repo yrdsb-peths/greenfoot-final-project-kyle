@@ -12,6 +12,7 @@ public class pointsMenu extends World
     Label points2 = new Label ("= 2 points (30%)", 30);
     Label points3 = new Label ("= 3 points (15%)", 30);
     Label points4 = new Label ("= 4 points (5%)", 30);
+    Label percentages = new Label ("% = chance to catch", 25);
     Label goBack = new Label ("<-- (R) GO BACK", 23);
     GreenfootSound button = new GreenfootSound("button.mp3");
     
@@ -31,6 +32,7 @@ public class pointsMenu extends World
         addObject(points2, 505, 100);
         addObject(points3, 155, 250);
         addObject(points4, 505, 250);
+        addObject(percentages, 110, 25);
         addObject(goBack, 75, 390);
     }
     
