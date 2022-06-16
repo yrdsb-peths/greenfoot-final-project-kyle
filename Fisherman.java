@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Fisherman here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Kyle Tse
+ * June 9th
  */
 public class Fisherman extends Actor
 {
@@ -68,8 +68,8 @@ public class Fisherman extends Actor
         animTimer = -1;
         setImage();
     }
-    
-    private void setImage()
+
+    private void setImage() //sets image to the current iamge for a certain amount of time
     {
         animTimer = (animTimer+1)%(10*currAnim.length);
         if(animTimer%10 == 0) 

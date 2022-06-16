@@ -121,23 +121,29 @@ public class MyWorld extends World
         scoreLabel.setValue(score);
     }
     
-    public void spawnBubbles()//spawns bubbles with increasing speed
+    /**
+     * spawns a bubble at a random location within 200 on the x axis
+     */
+    public void spawnBubbles()
     {
         Bubbles b = new Bubbles();
-        int x = (Greenfoot.getRandomNumber(200));
+        int x = (Greenfoot.getRandomNumber(150));
         int y = 290;
         b.frame = timePerMove;
         if(score % 2 == 0)
         {
             timePerMove -= 1;
         }
-        addObject (b, x + 400, y);
+        addObject (b, x + 450, y);
     }
     
-    public void spawnBubbles2()//spawns bubbles with increasing speed
+    /**
+     * spawns a bubble at a random location within 200 on the x axis
+     */
+    public void spawnBubbles2()
     {
         Bubbles2 b2 = new Bubbles2();
-        int x = (Greenfoot.getRandomNumber(200));
+        int x = (Greenfoot.getRandomNumber(150));
         int y = 290;
         b2.frame = timePerMove;
         if(score % 2 == 0)

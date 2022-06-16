@@ -8,27 +8,29 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class pointsMenu extends World
 {
-    Label points1 = new Label ("= 1 point", 40);
-    Label points2 = new Label ("= 2 points", 40);
-    Label points3 = new Label ("= 3 points", 40);
-    Label points4 = new Label ("= 4 points", 40);
+    Label points1 = new Label ("= 1 point (50%)", 30);
+    Label points2 = new Label ("= 2 points (30%)", 30);
+    Label points3 = new Label ("= 3 points (15%)", 30);
+    Label points4 = new Label ("= 4 points (5%)", 30);
     Label goBack = new Label ("<-- (R) GO BACK", 23);
+    GreenfootSound button = new GreenfootSound("button.mp3");
+    
     public pointsMenu()
     {    
         super(600, 400, 1); 
         aOne one = new aOne();
-        addObject(one, 50, 100);
+        addObject(one, 40, 100);
         bTwo two = new bTwo();
-        addObject(two, 400, 100);
+        addObject(two, 390, 100);
         cThree three = new cThree();
-        addObject(three, 50, 250);
+        addObject(three, 40, 250);
         dFour four = new dFour();
-        addObject(four, 400, 250);
+        addObject(four, 390, 250);
         
-        addObject(points1, 150, 100);
-        addObject(points2, 500, 100);
-        addObject(points3, 150, 250);
-        addObject(points4, 500, 250);
+        addObject(points1, 155, 100);
+        addObject(points2, 505, 100);
+        addObject(points3, 155, 250);
+        addObject(points4, 505, 250);
         addObject(goBack, 75, 390);
     }
     
@@ -36,6 +38,8 @@ public class pointsMenu extends World
     {
         if(Greenfoot.isKeyDown("R"))
         {
+            button.setVolume(40);
+            button.play();
             TitleScreen titleWorld = new TitleScreen();
             Greenfoot.setWorld(titleWorld);
         }

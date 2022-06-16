@@ -12,6 +12,7 @@ public class TitleScreen extends World
     Label start = new Label ("Press - SPACE - to start", 30);
     Label instructions = new Label ("<-- (Q) INSTRUCTIONS", 23);
     Label pointsMenu = new Label ("POINTS MENU (E) -->", 23);
+    GreenfootSound button = new GreenfootSound("button.mp3");
     /**
      * Constructor for objects of class TitleScreen.
      * 
@@ -31,18 +32,24 @@ public class TitleScreen extends World
         //start when user presses spacebar
         if(Greenfoot.isKeyDown("space"))
         {
+            button.setVolume(40);
+            button.play();
             MyWorld GameWorld = new MyWorld();
             Greenfoot.setWorld(GameWorld);
         }
         
         if(Greenfoot.isKeyDown("Q"))
         {
+            button.setVolume(40);
+            button.play();
             Instructions InsWorld = new Instructions();
             Greenfoot.setWorld(InsWorld);
         }
         
         if(Greenfoot.isKeyDown("E"))
         {
+            button.setVolume(40);
+            button.play();
             pointsMenu pointWorld = new pointsMenu();
             Greenfoot.setWorld(pointWorld);
         }
