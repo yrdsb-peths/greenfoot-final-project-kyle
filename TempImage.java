@@ -3,11 +3,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class cFish here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Kyle Tse 
+ * June 8th
  */
 
-public class TempImage extends Actor
+public class TempImage extends Actor //shows a temporary image of the fish caught
 {
     /**
      * Act - do whatever the cFish wants to do. This method is called whenever

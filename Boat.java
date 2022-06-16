@@ -3,10 +3,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Boat here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Kyle Tse
+ * June 5th
  */
-public class Boat extends Actor
+public class Boat extends Actor //image for boat
 {
     /**
      * Act - do whatever the Boat wants to do. This method is called whenever

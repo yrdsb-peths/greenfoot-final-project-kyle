@@ -3,9 +3,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Three here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Kyle Tse
+ * Jue 10th
  */
+
+//just used for an image in the points menu
 public class cThree extends Actor
 {
     /**
